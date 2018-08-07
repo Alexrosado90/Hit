@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
-import { StackNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation'
 import { Header, Button, Spinner } from './components/common';
 import LogInForm from './components/LogInForm';
 import CreateAccount from './components/CreateAccount';
@@ -47,8 +47,8 @@ class App extends Component {
      }
 
     }
-
-    export default (App = StackNavigator({
+//Routes set up
+    export default (App = createStackNavigator({
 
       LogInForm: {
         screen: LogInForm,

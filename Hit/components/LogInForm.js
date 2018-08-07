@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 import firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner } from './common';
+import { createStackNavigator } from 'react-navigation';
 //import CreateAccount from './CreateAccount'
 
- class LogInForm extends Component {
+ export default class LogInForm extends Component {
+     constructor(props) {
+         super(props);
+     }
     state = { email: '', password: '', error: '', loading: false };
     
     onButtonPress() {
@@ -71,7 +75,7 @@ import { Button, Card, CardSection, Input, Spinner } from './common';
             </CardSection> 
     
             <CardSection>
-            <Button onPress={() => navigate("CreateAccount")}> Create Account </Button>
+            <Button onPress={() => this.props.navigation.navigate("CreateAccount")}> Create Account </Button>
             </CardSection>
          </Card> 
         ) 
@@ -88,4 +92,4 @@ const styles = {
     }
 }
 
-export default LogInForm;
+//export default LogInForm;
