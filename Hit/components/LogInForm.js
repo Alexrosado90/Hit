@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 import firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner } from './common';
+//import CreateAccount from './CreateAccount'
 
-class LogInForm extends Component {
+ class LogInForm extends Component {
     state = { email: '', password: '', error: '', loading: false };
-
+    
     onButtonPress() {
         const { email, password } = this.state;
 
@@ -68,10 +69,16 @@ class LogInForm extends Component {
             <CardSection>
                 {this.renderButton()}
             </CardSection> 
-         </Card>  
-        )
+    
+            <CardSection>
+            <Button onPress={() => navigate("CreateAccount")}> Create Account </Button>
+            </CardSection>
+         </Card> 
+        ) 
+        
     }
 }
+
 
 const styles = {
     errorTextStyle: {

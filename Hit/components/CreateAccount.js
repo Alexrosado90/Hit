@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import firebase from 'firebase';
-import { Button, Card, CardSection, Input, Spinner } from './components/common';
+import { Header, Button, Card, CardSection, Input, Spinner } from '../components/common';
 
 class CreateAccount extends Component {
     state = {email: '', password: '', errors: '', loading: false};
@@ -39,6 +39,7 @@ class CreateAccount extends Component {
     render() {
         return (
             <Card>
+                <Header headerText="Sign up here!" />
                 <CardSection>
                     <Input
                     placeholder="user@email.com"

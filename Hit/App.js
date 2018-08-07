@@ -1,10 +1,12 @@
 import firebase from 'firebase';
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
+import { StackNavigator } from 'react-navigation'
 import { Header, Button, Spinner } from './components/common';
 import LogInForm from './components/LogInForm';
+import CreateAccount from './components/CreateAccount';
 
- class App extends Component {
+class App extends Component {
     state = { loggedIn: null };
 
     componentWillMount() {
@@ -43,7 +45,34 @@ import LogInForm from './components/LogInForm';
             </View>
        );
      }
+
     }
 
-    export default App;
+    export default (App = StackNavigator({
+
+      LogInForm: {
+        screen: LogInForm,
+        navigationOptions: {
+          title: "Sign in"
+        }
+      },
+
+
+      CreateAccount: {
+        screen: CreateAccount,
+        navigationOptions: {
+            title: "Create Account"
+        }
+    }
+
+    // WelcomePage: {
+    //     screen: WelcomePage,
+    //     navigationOptions: {
+    //         title: "Welcome"
+    //     }
+    // }
+  
+  }))
+
+    
   
