@@ -5,6 +5,7 @@ import { createStackNavigator } from 'react-navigation'
 import { Header, Button, Spinner } from './components/common';
 import LogInForm from './components/LogInForm';
 import CreateAccount from './components/CreateAccount';
+import WelcomePage from './components/WelcomePage'
 
 firebase.initializeApp({
   apiKey: "AIzaSyA6Uj3ob_4z5nm_3hlKm1-fHZU3mQ0CmU8",
@@ -16,6 +17,9 @@ firebase.initializeApp({
 });
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+  }
     state = { loggedIn: null };
 
     componentWillMount() {
@@ -24,6 +28,7 @@ class App extends Component {
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
             this.setState({ loggedIn: true });
+            this.props.navigation.navigate("WelcomePage")
           } else {
             this.setState({ loggedIn: false });
           }
@@ -65,14 +70,14 @@ class App extends Component {
         navigationOptions: {
             title: "Create Account"
         }
-    }
+    },
 
-    // WelcomePage: {
-    //     screen: WelcomePage,
-    //     navigationOptions: {
-    //         title: "Welcome"
-    //     }
-    // }
+        WelcomePage: {
+         screen: WelcomePage,
+         navigationOptions: {
+             title: "Welcome Page"
+         }
+     }
   
   }))
 

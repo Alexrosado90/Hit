@@ -26,12 +26,7 @@ import { createStackNavigator } from 'react-navigation';
     }
 
     onLoginSuccess() {
-        this.setState({
-            email: '',
-            password: '',
-            loading: false,
-            error: ''
-         });
+       this.props.navigation.navigate("WelcomePage")
     }
 
     renderButton() {
