@@ -28,28 +28,18 @@ import LogInForm from './components/LogInForm';
 
       }
 
-        renderContent() {
-          switch (this.state.loggedIn) {
-          case true:
-          return (
-            <Button onPress={() => firebase.auth().signOut()}>
-            Log Out
-            </Button>
-          )
-          case false:
-            return <LogInForm />;
-            default:
-            return <Spinner size="large" />
-            
-        }
-
-     }
+        //future sign out button
+        //     // <Button onPress={() => firebase.auth().signOut()}>
+        //     // Log Out
+        //     // </Button>
+        
+     
 
      render() {
        return (
          <View>
            <Header headerText=" Welcome to Hit Messaging!" />
-            {this.renderContent()}
+            <LogInForm />
             </View>
        );
      }
