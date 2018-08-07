@@ -1,24 +1,59 @@
-import React from 'react';
+import firebase from 'firebase';
+import React, { Component } from 'react';
 import { Text, View } from 'react-native';
+import { Header, Button, Spinner } from './components/common';
+import LogInForm from './components/LogInForm';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Hello World! yes it is!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
-}
+ class App extends Component {
+    state = { loggedIn: null };
 
-const styles = {
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-}
+    componentWillMount() {
+      firebase.initializeApp({
+          apiKey: "AIzaSyA6Uj3ob_4z5nm_3hlKm1-fHZU3mQ0CmU8",
+          authDomain: "project4-hit.firebaseapp.com",
+          databaseURL: "https://project4-hit.firebaseio.com",
+          projectId: "project4-hit",
+          storageBucket: "project4-hit.appspot.com",
+          messagingSenderId: "722940889773"
+       });
+
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            this.setState({ loggedIn: true });
+          } else {
+            this.setState({ loggedIn: false });
+          }
+
+        });
+
+      }
+
+        renderContent() {
+          switch (this.state.loggedIn) {
+          case true:
+          return (
+            <Button onPress={() => firebase.auth().signOut()}>
+            Log Out
+            </Button>
+          )
+          case false:
+            return <LogInForm />;
+            default:
+            return <Spinner size="large" />
+            
+        }
+
+     }
+
+     render() {
+       return (
+         <View>
+           <Header headerText=" Welcome to Hit Messaging!" />
+            {this.renderContent()}
+            </View>
+       );
+     }
+    }
+
+    export default App;
   
