@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 import firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner } from './common';
 import { createStackNavigator } from 'react-navigation';
-//import CreateAccount from './CreateAccount'
+
 
  export default class LogInForm extends Component {
      constructor(props) {

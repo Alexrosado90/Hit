@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import firebase from 'firebase';
+import { createStackNavigator } from 'react-navigation';
 import { Header, Button, Card, CardSection, Input, Spinner } from '../components/common';
 
-class CreateAccount extends Component {
+export default class CreateAccount extends Component {
+    constructor(props) {
+        super(props);
+    }
     state = {email: '', password: '', errors: '', loading: false};
 
     onButtonPress() {
@@ -12,18 +16,18 @@ class CreateAccount extends Component {
         this.setState({ error: ''});
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(this.onCreateSuccess.bind(this))
-            .catch(this.onCreateFail.bind(this));    
+             .then(this.onCreateSuccess.bind(this))
+            // .catch(this.onCreateFail.bind(this));    
         
     }
 
-    onCreateFail() {
-        this.setState({ error: 'Creation Failed', loading: false});
-    }
+    // onCreateFail() {
+    //     this.setState({ error: 'Creation Failed', loading: false});
+    // }
 
-    onCreateSuccess() {
-        //navigates to homepage or login page.
-    }
+      onCreateSuccess() {
+          this.props.navigation.navigate("LogInForm")
+      }
 
     renderButton() {
         if (this.state.loading) {
@@ -54,7 +58,7 @@ class CreateAccount extends Component {
                     secureTextEntry
                     placeholder="password"
                     label="Password"
-                    value={this.state.email}
+                    value={this.state.password}
                     onChangeText={password => this.setState({ password })}
                     />
                 </CardSection>
@@ -79,4 +83,4 @@ const styles = {
     }
 }
 
-export default CreateAccount;
+//export default CreateAccount;

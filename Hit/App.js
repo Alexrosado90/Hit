@@ -6,18 +6,20 @@ import { Header, Button, Spinner } from './components/common';
 import LogInForm from './components/LogInForm';
 import CreateAccount from './components/CreateAccount';
 
+firebase.initializeApp({
+  apiKey: "AIzaSyA6Uj3ob_4z5nm_3hlKm1-fHZU3mQ0CmU8",
+  authDomain: "project4-hit.firebaseapp.com",
+  databaseURL: "https://project4-hit.firebaseio.com",
+  projectId: "project4-hit",
+  storageBucket: "project4-hit.appspot.com",
+  messagingSenderId: "722940889773"
+});
+
 class App extends Component {
     state = { loggedIn: null };
 
     componentWillMount() {
-      firebase.initializeApp({
-          apiKey: "AIzaSyA6Uj3ob_4z5nm_3hlKm1-fHZU3mQ0CmU8",
-          authDomain: "project4-hit.firebaseapp.com",
-          databaseURL: "https://project4-hit.firebaseio.com",
-          projectId: "project4-hit",
-          storageBucket: "project4-hit.appspot.com",
-          messagingSenderId: "722940889773"
-       });
+      
 
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
