@@ -75,7 +75,7 @@ class App extends Component {
         WelcomePage: {
          screen: WelcomePage,
          navigationOptions: {
-             title: "Welcome Page"
+             title: "Hit Messenger"
          }
      }
   
