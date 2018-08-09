@@ -6,6 +6,7 @@ import { Header, Button, Spinner } from './components/common';
 import LogInForm from './components/LogInForm';
 import CreateAccount from './components/CreateAccount';
 import WelcomePage from './components/WelcomePage'
+//import Chat from './components/Chat';
 
 firebase.initializeApp({
   apiKey: "AIzaSyA6Uj3ob_4z5nm_3hlKm1-fHZU3mQ0CmU8",
@@ -77,7 +78,14 @@ class App extends Component {
          navigationOptions: {
              title: "Hit Messenger"
          }
-     }
+     },
+
+      // Chat: {
+      //   screen: Chat,
+      //   navigationOptions: {
+      //     title: "Chat"
+      //   }
+      // }
   
   }))
 
