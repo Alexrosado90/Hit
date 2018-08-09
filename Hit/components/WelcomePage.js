@@ -17,7 +17,7 @@ export default class WelcomePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            datasource: new ListView.DataSource({
+            dataSource: new ListView.DataSource({
                 rowHasChanged: (row1, row2) => row1 !== row2
             }),
             loading: true
@@ -45,7 +45,7 @@ export default class WelcomePage extends Component {
             });
 
             this.setState({
-                DataSource: this.state.datasource.cloneWithRows(items),
+                dataSource: this.state.dataSource.cloneWithRows(items),
                 loading: false
             });
         });
@@ -60,11 +60,12 @@ export default class WelcomePage extends Component {
             name = rowData.name;
             email = rowData.email;
             uid = rowData.uid;
-        this.props.navigation.navigate("chat", {
-            name: name,
-            email: email,
-            uid: uid
-        })
+        this.props.navigation.navigate("chat")
+        //  {
+        //     name: name,
+        //     email: email,
+        //     uid: uid
+        // })
          }}
          >
         <CardSection>
@@ -87,7 +88,7 @@ export default class WelcomePage extends Component {
 
             <CardSection>
                 <ListView
-                dataSource={this.state.datasource}
+                dataSource={this.state.dataSource}
                 renderRow={this.renderRow} />
             </CardSection>
 
