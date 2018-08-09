@@ -23,7 +23,7 @@ export default class WelcomePage extends Component {
             loading: true
         };
         this.friendsRef = this.getRef().child("friends");
-        navigator = this.props.navigator
+    
     }
 
     getRef() {
@@ -55,21 +55,20 @@ export default class WelcomePage extends Component {
          this.listenForItems(this.friendsRef);
      }
 
-    renderRow(rowData) {
+    renderRow = rowData => {
         return ( <TouchableOpacity onPress={() => {
             name = rowData.name;
             email = rowData.email;
             uid = rowData.uid;
-        this.props.navigation.navigate("chat")
-        //  {
-        //     name: name,
-        //     email: email,
-        //     uid: uid
+        //     this.props.navigation.navigate('Chat', {
+        //      name: name,
+        //      email: email,
+        //      uid: uid
         // })
          }}
          >
         <CardSection>
-        <Text>{rowData.name}</Text>
+        <Button onPress={() => {this.props.navigation.navigate("Chat")}}>{rowData.name}</Button>
         </CardSection>
         </TouchableOpacity>
     )

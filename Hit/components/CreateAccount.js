@@ -202,4 +202,4 @@ const styles = {
 //   }
 // });
 
-AppRegistry.registerComponent("CreateAccount", () => CreateAccount);
+//AppRegistry.registerComponent("CreateAccount", () => CreateAccount);
