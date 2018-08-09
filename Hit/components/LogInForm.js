@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, AsyncStorage } from 'react-native';
 import firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner } from './common';
 import { createStackNavigator } from 'react-navigation';
@@ -11,7 +11,7 @@ import { createStackNavigator } from 'react-navigation';
      }
     state = { email: '', password: '', error: '', loading: false };
     
-    onButtonPress() {
+    async onButtonPress() {
         const { email, password } = this.state;
 
         this.setState({ error: ''});
@@ -19,6 +19,9 @@ import { createStackNavigator } from 'react-navigation';
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(this.onLoginSuccess.bind(this))
         .catch(this.onLoginFail.bind(this))
+
+        await AsyncStorage.setItem("email", email);
+        await AsyncStorage.setItem("password", password);
     }
 
     onLoginFail() {
@@ -27,7 +30,10 @@ import { createStackNavigator } from 'react-navigation';
 
     onLoginSuccess() {
        this.props.navigation.navigate("WelcomePage")
+      
     }
+
+    
 
     renderButton() {
         if (this.state.loading) {

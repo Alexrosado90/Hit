@@ -18,7 +18,7 @@ export default class WelcomePage extends Component {
         super(props);
         this.state = {
             datasource: new ListView.DataSource({
-                rowHasChanged: (row1, row2) => row1 !== row2,
+                rowHasChanged: (row1, row2) => row1 !== row2
             }),
             loading: true
         };
@@ -33,7 +33,7 @@ export default class WelcomePage extends Component {
     listenForItems(friendsRef) {
         let user = firebase.auth().currentUser;
 
-        friendsRef.on('value', (snap) => {
+        friendsRef.on("value", (snap) => {
             let items = [];
             snap.forEach((child) => {
                 if(child.val().email != user.email)
@@ -51,22 +51,25 @@ export default class WelcomePage extends Component {
         });
     }
 
-    componentDidMount() {
-        this.listenForItems(this.friendsRef);
-    }
+     componentDidMount() {
+         this.listenForItems(this.friendsRef);
+     }
 
-    renderRow = rowData => {
+    renderRow(rowData) {
         return ( <TouchableOpacity onPress={() => {
+            name = rowData.name;
             email = rowData.email;
             uid = rowData.uid;
-        this.props.navigation.navigator("chat", {
+        this.props.navigation.navigate("chat", {
+            name: name,
             email: email,
-            uid: uid})
+            uid: uid
+        })
          }}
          >
-        <View>
+        <CardSection>
         <Text>{rowData.name}</Text>
-        </View>
+        </CardSection>
         </TouchableOpacity>
     )
 }
@@ -105,4 +108,5 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center'
     }
+
 }
