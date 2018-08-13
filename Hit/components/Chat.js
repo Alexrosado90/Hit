@@ -15,19 +15,13 @@ export default class Chat extends Component {
             
         };
 
-        //this.friend = this.props.friend
-
         this.user = firebase.auth().currentUser;
-        console.log("user:" + this.user.uid)
 
         const { params } = this.props.navigation.state;
          uid = params.uid;
          name = params.name;
          email = params.email;
-
-         console.log( "user:" + uid)
        
-
         this.chatRef = this.getRef().child('chat/' + this.generateChatId())
         this.chatRefData = this.chatRef.orderByChild('order')
         this.onSend = this.onSend.bind(this);
@@ -46,8 +40,7 @@ export default class Chat extends Component {
     listenForItems(chatRef) {
         chatRef.on("value", snap => {
             let items = [];
-            snap.forEach(child => { 
-                //let name = child.val().uid == this.user.uid ? this.user.name : name1;            
+            snap.forEach(child => {             
                 items.push({
                     _id: child.val().createdAt,
                     text: child.val().text,
@@ -76,12 +69,6 @@ export default class Chat extends Component {
        
     }
 
-    // getUser() {
-    //     return {
-    //         name: this.props.navigation.state.params.name,
-    //         _id: Fire.shared.uid,
-    //     }
-    // }
 
     onSend(messages = []) {
 

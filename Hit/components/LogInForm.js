@@ -32,9 +32,7 @@ import { createStackNavigator } from 'react-navigation';
        this.props.navigation.navigate("WelcomePage")
       
     }
-
-    
-
+ 
     renderButton() {
         if (this.state.loading) {
             return <Spinner size="small" />;
@@ -92,5 +90,3 @@ const styles = {
         color: 'red'
     }
 }
-
-//export default LogInForm;
