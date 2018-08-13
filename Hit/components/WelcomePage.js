@@ -59,19 +59,26 @@ export default class WelcomePage extends Component {
         return ( <TouchableOpacity onPress={() => {
             name = rowData.name;
             email = rowData.email;
-            uid = rowData.uid;
-        //     this.props.navigation.navigate('Chat', {
-        //      name: name,
-        //      email: email,
-        //      uid: uid
-        // })
-         }}
+             uid = rowData.uid;
+             {this.props.navigation.navigate('Chat', {
+              name: name,
+              email: email,
+              uid: uid
+            
+         })
+        }}}
          >
-        <CardSection>
-        <Button onPress={() => {this.props.navigation.navigate("Chat")}}>{rowData.name}</Button>
-        </CardSection>
+          <CardSection>
+         <Button onPress={() => {this.props.navigation.navigate("Chat", {
+             name: rowData.name,
+             email: rowData.email,
+             uid: rowData.uid
+         })}}>{rowData.name}</Button>
+         </CardSection> 
         </TouchableOpacity>
-    )
+           
+        )
+    
 }
     
 

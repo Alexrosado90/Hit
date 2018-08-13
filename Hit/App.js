@@ -7,6 +7,7 @@ import LogInForm from './components/LogInForm';
 import CreateAccount from './components/CreateAccount';
 import WelcomePage from './components/WelcomePage'
 import Chat from './components/Chat';
+//import Backend from './components/Backend'
 
 firebase.initializeApp({
   apiKey: "AIzaSyA6Uj3ob_4z5nm_3hlKm1-fHZU3mQ0CmU8",
@@ -47,13 +48,19 @@ class App extends Component {
 
      render() {
        return (
-         <View>
+         <View style={styles.viewStyle}>
            <Header headerText=" Welcome to Hit Messaging!" />
             <LogInForm />
             </View>
        );
      }
 
+    }
+
+    const styles = {
+      viewStyle: {
+        backgroundColor: '#3b889b'
+      }
     }
 //Routes set up
     export default (App = createStackNavigator({
