@@ -5,6 +5,8 @@ import firebase from 'firebase';
 import { StackNavigator } from 'react-navigation';
 
 
+
+
  let name, uid, email;
 
 export default class Chat extends Component {
@@ -85,11 +87,25 @@ export default class Chat extends Component {
         });
     }
 
+    renderBubble(props) {
+        return (
+            <Bubble
+            {...props}
+            wrapperStyle={{left: {
+                backgroundColor: 'black',
+            }
+        }}
+        />
+        )
+    }
+
+   
 
     render() {
         return (
-            <GiftedChat
+            <GiftedChat style={{backgroundColor:'black'}}
             messages={this.state.messages}
+            //renderBubble={this.renderBubble}
             onSend={this.onSend.bind(this)}
             user={{ _id: this.user.uid}}
             />
