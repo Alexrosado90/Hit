@@ -35,12 +35,12 @@ export default class CreateAccount extends Component {
     return firebase.database().ref();
   }
 
-  // static navigationOptions = {
-  //   headerStyle: {
-  //     backgroundColor: "#16a085",
-  //     elevation: null
-  //   }
-  // };
+   static navigationOptions = {
+     headerStyle: {
+       backgroundColor: "#16a085",
+       elevation: null
+     }
+   };
 
   async onButtonPress() {
     this.setState({ errorMessage: null, loading: true });
