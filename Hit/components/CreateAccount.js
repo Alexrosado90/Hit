@@ -42,7 +42,7 @@ export default class CreateAccount extends Component {
      }
    };
 
-  async onButtonPress() {
+  /*async*/ onButtonPress() {
     this.setState({ errorMessage: null, loading: true });
     const { email, password, name } = this.state;
    
@@ -53,9 +53,9 @@ export default class CreateAccount extends Component {
         this.setState({ loading: false });
       })
     
-    await AsyncStorage.setItem("email", email);
-    await AsyncStorage.setItem("name", name);
-    await AsyncStorage.setItem("password", password);
+    // await AsyncStorage.setItem("email", email);
+    // await AsyncStorage.setItem("name", name);
+    // await AsyncStorage.setItem("password", password);
     this.props.navigation.navigate("LogInForm");
   }
 
