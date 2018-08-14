@@ -7,8 +7,7 @@ A prototype messenging app that will allow users to engage in conversations with
 
 ## Wireframes
 #### Login
-![Login]
-(Wireframes/welcome_page.png)
+![Login](Wireframes/welcome_page.png)
 
 #### Create Account
 ![Create Account]
