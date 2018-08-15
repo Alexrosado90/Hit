@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ListView, TouchableOpacity } from 'react-native';
+import { Text, View, ListView, TouchableOpacity, ScrollView } from 'react-native';
 import firebase from 'firebase';
 import { createStackNavigator } from 'react-navigation'
 import { Header, Card, CardSection, Spinner, Button } from './common';
@@ -25,6 +25,13 @@ export default class WelcomePage extends Component {
         this.friendsRef = this.getRef().child("friends");
     
     }
+
+    static navigationOptions = {
+        headerStyle: {
+          backgroundColor: "#6093e5",
+          elevation: null
+        }
+      };
 
     getRef() {
         return firebase.database().ref();

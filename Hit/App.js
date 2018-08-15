@@ -68,7 +68,7 @@ class App extends Component {
       LogInForm: {
         screen: LogInForm,
         navigationOptions: {
-          title: "Sign in"
+          title: "Welcome to Hit Messenger!"
         }
       },
 

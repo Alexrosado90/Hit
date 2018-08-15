@@ -11,7 +11,7 @@ import { createStackNavigator } from 'react-navigation';
      }
     state = { email: '', password: '', error: '', loading: false };
     
-    /*async*/ onButtonPress() {
+    async onButtonPress() {
         const { email, password } = this.state;
 
         this.setState({ error: ''});
@@ -20,9 +20,16 @@ import { createStackNavigator } from 'react-navigation';
         .then(this.onLoginSuccess.bind(this))
         .catch(this.onLoginFail.bind(this))
 
-        // await AsyncStorage.setItem("email", email);
-        // await AsyncStorage.setItem("password", password);
+         await AsyncStorage.setItem("email", email);
+         await AsyncStorage.setItem("password", password);
     }
+
+    static navigationOptions = {
+        headerStyle: {
+          backgroundColor: "#6093e5",
+          elevation: null
+        }
+      };
 
     onLoginFail() {
         this.setState({ error: 'Authentication Failed', loading: false })

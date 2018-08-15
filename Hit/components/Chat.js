@@ -29,6 +29,13 @@ export default class Chat extends Component {
         this.onSend = this.onSend.bind(this);
     }
 
+    static navigationOptions = {
+        headerStyle: {
+          backgroundColor: "#6093e5",
+          elevation: null
+        }
+      };
+
     generateChatId() {
         if(this.user.uid > uid)
         return `${this.user.uid}-${uid}`;
@@ -86,26 +93,12 @@ export default class Chat extends Component {
             });
         });
     }
-
-    renderBubble(props) {
-        return (
-            <Bubble
-            {...props}
-            wrapperStyle={{left: {
-                backgroundColor: 'black',
-            }
-        }}
-        />
-        )
-    }
-
    
 
     render() {
         return (
             <GiftedChat style={{backgroundColor:'black'}}
             messages={this.state.messages}
-            //renderBubble={this.renderBubble}
             onSend={this.onSend.bind(this)}
             user={{ _id: this.user.uid}}
             />
